@@ -21,6 +21,10 @@
     <option name="TEMPLATE_FOLDERS">
       <list>
         <option value="$MODULE_DIR$/templates" />
+        <option value="$MODULE_DIR$/task/templates" />
+        <option value="$MODULE_DIR$/logsys/templates" />
+        <option value="$MODULE_DIR$/logsys/templates/logsys" />
+        <option value="$MODULE_DIR$/task/templates/task" />
       </list>
     </option>
   </component>

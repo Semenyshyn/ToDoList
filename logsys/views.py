@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render_to_response
 from django.template.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
+from .forms import UserCreateForm
 
 
 def log_in(request):
@@ -29,7 +30,7 @@ def log_out(request):
 def sing_up(request):
     args = {}
     args.update(csrf(request))
-    args['form'] = UserCreationForm()
+    args['form'] = UserCreateForm()
     if request.POST:
         newuser_form = UserCreationForm(request.POST)
         if newuser_form.is_valid():
