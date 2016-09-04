@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block login %}
+        <form class="form col-md-4 col-md-offset-4" action="/auth/singup/" method="post">
+            {% csrf_token %}
+            <div>
+
+                {{ form }}
+
+            </div>
+            <div class="form-group ">
+            <input class="btn btn-primary" type="submit" value="OK">
+             </div>
+        </form>
+
+{% endblock %}

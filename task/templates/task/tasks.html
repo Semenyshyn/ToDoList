@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% load static from staticfiles %}
+
+{% block tasks %}
+<html>
+<head>
+    <meta name="'viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}">
+</head>
+<body>
+
+<div class="container">
+  <h2>Table</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name of task</th>
+        <th>Description</th>
+        <th>Date of publication</th>
+        <th>From</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for task in tasks %}
+      <tr>
+          <td>{{task.id}}</td>
+          <td>{{task.name_text}}</td>
+          <td>{{task.description_text}}</td>
+          <td>{{task.pub_date}}</td>
+          <td>{{task.task_from.username}}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <div class="pull-right" >
+    <a href="/addtask/"><button type="button" class="btn btn-primary" >add task</button></a>
+  </div>
+</div>
+
+
+</body>
+</html>
+{% endblock %}

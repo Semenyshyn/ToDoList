@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+
+{% block login %}
+    <div class="container">
+        <form role="form" action="/auth/login/" method="post">
+            {% csrf_token %}
+            <div class="form-group col-md-4 col-md-offset-4">
+                <label for="username">User: </label>
+                <input type="text" class="form-control" name="username" id="username">
+            </div>
+            <div class="form-group col-md-4 col-md-offset-4">
+                <label for="password">Password: </label>
+                <input type="password" class="form-control" name="password" id="password">
+                {% if login_error %}
+                <label class="errornote">{{ login_error }}</label>
+                {% endif %}
+            </div>
+            <div class="form-group col-md-4 col-md-offset-4">
+             <input type="submit" class="btn btn-primary" value="Log in">
+             <a href="/auth/singup/">Sing up</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
