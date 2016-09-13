@@ -1,7 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render_to_response
 from django.template.context_processors import csrf
-from django.contrib.auth.forms import UserCreationForm
 from .forms import UserCreateForm
 
 
@@ -24,7 +23,7 @@ def log_in(request):
 
 def log_out(request):
     logout(request)
-    return redirect('/')
+    return redirect('/auth/login')
 
 
 def sing_up(request):
@@ -32,11 +31,15 @@ def sing_up(request):
     args.update(csrf(request))
     args['form'] = UserCreateForm()
     if request.POST:
-        newuser_form = UserCreationForm(request.POST)
+        newuser_form = UserCreateForm(request.POST)
         if newuser_form.is_valid():
-            newuser_form.save()
-            newuser = authenticate(username=newuser_form.cleaned_data['username'], password=newuser_form.cleaned_data['password2'])
-            login(request, newuser)
+            user = newuser_form.save()
+            user.set_password(request.POST['password2'])
+            user.save()
+            username = request.POST['username']
+            password = request.POST['password2']
+            user = authenticate(username=username, password=password)
+            login(request, user)
             return redirect('/')
         else:
             args['form'] = newuser_form

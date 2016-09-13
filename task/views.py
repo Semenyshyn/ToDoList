@@ -3,7 +3,7 @@ from .models import Task
 from django.contrib import auth
 from .forms import TaskForm
 from datetime import datetime
-from django.template import RequestContext
+from guardian.shortcuts import get_objects_for_user
 
 
 def tasks(request):

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}">
 </head>
 <body>
-
+    {% if username %}
 <div class="container">
   <h2>Table</h2>
   <table class="table table-bordered">
@@ -24,20 +24,23 @@
     <tbody>
     {% for task in tasks %}
       <tr>
+      {% if task.task_from.username == username %}
           <td>{{task.id}}</td>
           <td>{{task.name_text}}</td>
           <td>{{task.description_text}}</td>
           <td>{{task.pub_date}}</td>
           <td>{{task.task_from.username}}</td>
+      {% endif %}
       </tr>
     {% endfor %}
     </tbody>
   </table>
+
   <div class="pull-right" >
     <a href="/addtask/"><button type="button" class="btn btn-primary" >add task</button></a>
   </div>
 </div>
-
+    {% endif %}
 
 </body>
 </html>
