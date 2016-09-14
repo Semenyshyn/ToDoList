@@ -22,3 +22,9 @@ def add_task(request):
     else:
         form = TaskForm()
     return render(request, 'addtask.html', {'form': form, 'username': auth.get_user(request).username})
+
+
+def delete(request, task_id):
+    obj = Task.objects.get(pk=task_id)
+    obj.delete()
+    return redirect('/')
