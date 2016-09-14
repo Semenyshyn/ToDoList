@@ -19,6 +19,7 @@
         <th>Description</th>
         <th>Date of publication</th>
         <th>From</th>
+        <th>Deleting</th>
       </tr>
     </thead>
     <tbody>
@@ -30,6 +31,7 @@
           <td>{{task.description_text}}</td>
           <td>{{task.pub_date}}</td>
           <td>{{task.task_from.username}}</td>
+          <td><a href="/delete/{{ task.id }}/"><button type="button" class="btn btn-primary" >delete</button></a></td>
       {% endif %}
       </tr>
     {% endfor %}
