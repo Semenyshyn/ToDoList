@@ -14,8 +14,8 @@ import os
 import djcelery
 djcelery.setup_loader()
 
-BROKER_URL = 'redis://127.0.0.1:6379/0'
-CELERY_ACCEPT_CONTENT = ['json']
+BROKER_URL = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'task.apps.TaskConfig',
     'logsys.apps.LogsysConfig',
-    'djcelery'
+    'djcelery',
 ]
 
 MIDDLEWARE = [
@@ -130,7 +130,7 @@ TIME_ZONE = 'Europe/Kiev'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
@@ -140,6 +140,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    ('static', '/home/ivan/djangoenv/bin/firstapp/static'),
-)
+STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static"),
+]
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_cl')

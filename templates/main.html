@@ -3,8 +3,8 @@
 <html>
 <head>
     <title>TodoList</title>
-    <link rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'static/mystyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'mystyle.css' %}">
 </head>
 
 <body>
@@ -16,9 +16,9 @@
 
     <ul class="nav navbar-nav navbar-right">
         {% if username %}
-      <li><a href="/auth/logout/"><span class="glyphicon glyphicon-user"></span> Log Out({{ username }})</a></li>
+      <li><a href="{% url 'logsys:logout' %}"><span class="glyphicon glyphicon-user"></span> Log Out({{ username }})</a></li>
         {% else %}
-      <li><a href="/auth/login/"><span class="glyphicon glyphicon-log-in"></span> Sing In</a></li>
+      <li><a href="{% url 'logsys:login' %}"><span class="glyphicon glyphicon-log-in"></span> Sing In</a></li>
         {% endif %}
     </ul>
   </div>
