@@ -23,6 +23,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -67,10 +68,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            '/home/ivan/todoenv/bin/todolist/task/templates/task/',
-            '/home/ivan/todoenv/bin/todolist/templates/',
-            '/home/ivan/todoenv/bin/todolist/logsys/templates/logsys/',
-
+            os.path.join(os.path.dirname(PACKAGE_ROOT), 'templates'),
+            os.path.join(os.path.dirname(PACKAGE_ROOT), 'task/templates/task'),
+            os.path.join(os.path.dirname(PACKAGE_ROOT), 'logsys/templates/logsys')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
